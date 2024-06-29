@@ -1,8 +1,21 @@
 const puppeteer = require('puppeteer');
+require('dotenv').config();
 
 const screenshot = async (req, res) => {
-	// try {
-		const browser = await puppeteer.launch({ headless: true });
+	try {
+		const browser = await puppeteer.launch({
+			headless: true,
+			executablePath:
+				process.node.ENV === 'production'
+					? process.env.PUPPETEER_EXECUTABLE_PATH
+					: puppeteer.executablePath(),
+			args: [
+				'--no-sandbox',
+				'--disable-setuid-sandbox',
+				'--single-process',
+				'--no-zygote',
+			],
+		});
 		try {
 			const page = await browser.newPage();
 			const xCases = req.body.columns.length;
@@ -30,9 +43,9 @@ const screenshot = async (req, res) => {
 		} finally {
 			await browser.close();
 		}
-	// } catch (e) {
-	// 	res.status(500).json({ message: e.message });
-	// }
+	} catch (e) {
+		res.status(500).json({ message: e.message });
+	}
 };
 
 module.exports = screenshot;
