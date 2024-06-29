@@ -6,7 +6,7 @@ const screenshot = async (req, res) => {
 		const browser = await puppeteer.launch({
 			headless: true,
 			executablePath:
-				process.node.ENV === 'production'
+				process.env.NODE_ENV === 'production'
 					? process.env.PUPPETEER_EXECUTABLE_PATH
 					: puppeteer.executablePath(),
 			args: [
