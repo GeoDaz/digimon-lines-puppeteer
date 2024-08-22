@@ -21,18 +21,18 @@ const screenshot = async (req, res) => {
 			const xCases = req.body.columns.length;
 			const yCases = req.body.size;
 			await page.setViewport({
-				width: 70 + 45 + 175 * xCases,
+				width: 70 + 50 + 175 * xCases,
 				height: 70 + 45 + 175 * yCases,
 			});
 			// prettier-ignore
 			await page.goto(
-			process.env.DIGIMON_LINES_URL
-			+ '/build/' 
-			+ encodeURIComponent(JSON.stringify(req.body))
-			+ '/screen'
-		);
+				process.env.DIGIMON_LINES_URL
+				 + '/build/' 
+				 + encodeURIComponent(JSON.stringify(req.body))
+				 + '/screen', 
+				{"waitUntil" : "networkidle0"}
+			);
 
-			await new Promise(resolve => setTimeout(resolve, 500));
 			const screenshot = await page.screenshot();
 			await browser.close();
 
