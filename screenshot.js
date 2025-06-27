@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 require('dotenv').config();
 
-const screenshot = async (req, res) => {
+const screenshot = async (req, res, license) => {
 	try {
 		const browser = await puppeteer.launch({
 			headless: true,
@@ -29,7 +29,7 @@ const screenshot = async (req, res) => {
 				process.env.DIGIMON_LINES_URL
 				 + '/build/' 
 				 + encodeURIComponent(JSON.stringify(req.body))
-				 + '/screen', 
+				 + `/screen/${license}`, 
 				{"waitUntil" : "networkidle0"}
 			);
 

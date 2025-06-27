@@ -14,6 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/digimon-lines/build', screenshot);
+app.post('/digimon-lines/build/pokemon', (req, res) => screenshot(req, res, 'pokemon'));
 
 app.listen(PORT, () => {
 	console.log('Server is running on port ' + PORT);

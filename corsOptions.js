@@ -1,4 +1,9 @@
-var allowedOrigins = ['http://localhost:3000', 'https://digimon-lines.com'];
+var allowedOrigins = [
+	'http://localhost:3000',
+	'https://digimon-lines.com',
+	'https://yugioh-lines.vercel.app',
+	'https://dragon-quest-synth.vercel.app',
+];
 
 corsOptions = {
 	origin: function (origin, callback) {
