@@ -29,7 +29,8 @@ const screenshot = async (req, res, license) => {
 				process.env.DIGIMON_LINES_URL
 				 + '/build/' 
 				 + encodeURIComponent(JSON.stringify(req.body))
-				 + `/screen/${license}`, 
+				 + '/screen'
+				 + (license ? `/${license}` : ''), 
 				{"waitUntil" : "networkidle0"}
 			);
 
