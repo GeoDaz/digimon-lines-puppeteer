@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 	res.send('Server is running');
 });
 
-app.post('/digimon-lines/build', screenshot);
+app.post('/digimon-lines/build', (req, res) => screenshot(req, res));
 app.post('/digimon-lines/build/pokemon', (req, res) => screenshot(req, res, 'pokemon'));
 
 app.listen(PORT, () => {
