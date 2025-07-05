@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 require('dotenv').config();
 
-const screenshot = async (req, res, license) => {
+const screenshot = async (req, res, url, license) => {
 	try {
 		const browser = await puppeteer.launch({
 			headless: true,
@@ -26,7 +26,7 @@ const screenshot = async (req, res, license) => {
 			});
 			// prettier-ignore
 			await page.goto(
-				process.env.DIGIMON_LINES_URL
+				url
 				 + '/build/' 
 				 + encodeURIComponent(JSON.stringify(req.body))
 				 + '/screen'

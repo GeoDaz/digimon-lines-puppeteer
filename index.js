@@ -13,8 +13,18 @@ app.get('/', (req, res) => {
 	res.send('Server is running');
 });
 
-app.post('/digimon-lines/build', (req, res) => screenshot(req, res));
-app.post('/digimon-lines/build/pokemon', (req, res) => screenshot(req, res, 'pokemon'));
+app.post('/digimon-lines/build', (req, res) =>
+	screenshot(req, res, process.env.DIGIMON_LINES_URL)
+);
+app.post('/digimon-lines/build/pokemon', (req, res) =>
+	screenshot(req, res, process.env.DIGIMON_LINES_URL, 'pokemon')
+);
+app.post('/yugioh-lines/build', (req, res) =>
+	screenshot(req, res, process.env.YUGIOH_LINES_URL)
+);
+app.post('/dragon-quest/build', (req, res) =>
+	screenshot(req, res, process.env.DRAGON_QUEST_URL)
+);
 
 app.listen(PORT, () => {
 	console.log('Server is running on port ' + PORT);
