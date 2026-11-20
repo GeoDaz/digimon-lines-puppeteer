@@ -1,6 +1,7 @@
 {
 	"name": "puppeteer-renderer",
 	"version": "1.0.0",
+	"packageManager": "pnpm@11.4.0",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
